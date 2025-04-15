@@ -1,12 +1,11 @@
 from hard_321_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.maxNumber([3,4,6,5], [9,1,2,5,8,3], 5) == [9,8,6,5,3]
     assert solution.maxNumber([6,7], [6,0,4], 5) == [6,7,6,0,4]
     assert solution.maxNumber([3,9], [8,9], 3) == [9,8,9]
-    
-
 
 def run_advanced_tests(solution):
     assert solution.maxNumber([6, 0, 4, 7], [6, 8], 5) == [8, 6, 0, 4, 7]
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.maxNumber([2], [9, 4, 7, 8, 3, 0, 2, 6, 5, 1], 2) == [9, 8]
     assert solution.maxNumber([3, 6, 2], [7, 9, 3, 1, 6, 0], 1) == [9]
     assert solution.maxNumber([3], [9], 1) == [9]
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

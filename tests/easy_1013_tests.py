@@ -1,12 +1,11 @@
 from easy_1013_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.canThreePartsEqualSum([0, 2, 1, -6, 6, -7, 9, 1, 2, 0, 1]) == True
     assert solution.canThreePartsEqualSum([0, 2, 1, -6, 6, 7, 9, -1, 2, 0, 1]) == False
     assert solution.canThreePartsEqualSum([3, 3, 6, 5, -2, 2, 5, 1, -9, 4]) == True
-    
-
 
 def run_advanced_tests(solution):
     assert solution.canThreePartsEqualSum([21, 91, 16, 58, 73, 50, 24, 85]) == False
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.canThreePartsEqualSum([50, 94, 87, 66, 72, 92, 7, 95, 17, 41]) == False
     assert solution.canThreePartsEqualSum([66, 96, 44, 91, 6]) == False
     assert solution.canThreePartsEqualSum([8, 25, 64, 85]) == False
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

@@ -1,11 +1,10 @@
 from hard_410_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.splitArray([7,2,5,10,8], 2) == 18
     assert solution.splitArray([1,2,3,4,5], 2) == 9
-    
-
 
 def run_advanced_tests(solution):
     assert solution.splitArray([681, 630, 94, 58, 88, 835, 727, 989], 5) == 989
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.splitArray([319, 819, 350, 834, 782, 242, 349, 637, 956, 519], 2) == 3104
     assert solution.splitArray([511, 902], 2) == 902
     assert solution.splitArray([441, 439, 67, 584, 163, 522], 3) == 880
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

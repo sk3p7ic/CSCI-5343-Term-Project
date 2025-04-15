@@ -1,13 +1,12 @@
 from medium_122_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     # Test case from the task description
     assert solution.maxProfit([7,1,5,3,6,4]) == 7
     assert solution.maxProfit([1,2,3,4,5]) == 4
     assert solution.maxProfit([7,6,4,3,1]) == 0
-    
-
 
 def run_advanced_tests(solution):
     assert solution.maxProfit([6833, 4016, 3340, 9155]) == 5815
@@ -110,6 +109,7 @@ def run_advanced_tests(solution):
     assert solution.maxProfit([6018, 7445, 9741, 2454]) == 3723
     assert solution.maxProfit([3443, 9234, 9851]) == 6408
     assert solution.maxProfit([6814]) == 0
+        
 
 if __name__ == '__main__':
     import sys
@@ -128,6 +128,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

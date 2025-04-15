@@ -1,11 +1,10 @@
 from medium_134_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]) == 3
     assert solution.canCompleteCircuit([2, 3, 4], [3, 4, 3]) == -1
-    
-
 
 def run_advanced_tests(solution):
     assert solution.canCompleteCircuit([69, 80, 53, 31, 63, 99, 40, 45, 46], [42, 80, 50, 5, 46, 94, 99, 41, 45]) == 8
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.canCompleteCircuit([59, 29, 85, 84, 13, 88, 64, 39, 56], [100, 13, 58, 91, 64, 45, 22, 43, 25]) == 6
     assert solution.canCompleteCircuit([73, 78], [30, 91]) == 0
     assert solution.canCompleteCircuit([60, 95, 87, 78, 8, 50, 34, 2, 1, 72], [92, 47, 42, 73, 57, 77, 49, 34, 55, 19]) == -1
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

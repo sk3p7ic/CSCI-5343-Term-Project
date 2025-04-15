@@ -1,12 +1,11 @@
 from medium_402_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.removeKdigits("1432219", 3) == "1219"
     assert solution.removeKdigits("10200", 1) == "200"
     assert solution.removeKdigits("10", 2) == "0"
-    
-
 
 def run_advanced_tests(solution):
     assert solution.removeKdigits('3448', 1) == '344'
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.removeKdigits('84', 1) == '4'
     assert solution.removeKdigits('9000', 4) == '0'
     assert solution.removeKdigits('788', 1) == '78'
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

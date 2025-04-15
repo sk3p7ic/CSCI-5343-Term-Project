@@ -1,11 +1,10 @@
 from hard_632_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.smallestRange([[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]) == [20,24]
     assert solution.smallestRange([[1,2,3],[1,2,3],[1,2,3]]) == [1,1]
-    
-
 
 def run_advanced_tests(solution):
     assert solution.smallestRange([[-69875, -35265, 66745, 81080, 90155], [-13229, -1144, 13630, 27302, 51116, 79012, 80807, 92818, 98613, 98719], [-49847, -15112, 11490, 52288, 58462, 77626, 92717]]) == [90155, 92818]
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.smallestRange([[-94551, 64440, 70911, 76733, 88631], [-81838, -31811, -18355, 7503, 15302, 20485, 53856, 54720, 64867, 70578]]) == [70578, 70911]
     assert solution.smallestRange([[-98293, -86569, -71805, -71416, -52009, -15077, -14827, 1941, 50040, 71960], [-41554, -40378, -29910, -29279, -19191, 24475, 39479, 58260, 72461], [-86509, -57879, -55788, -25283, -12278, 6987, 41726, 51501, 97973, 98458], [-58104, 72909]]) == [-58104, -41554]
     assert solution.smallestRange([[-22070], [49339]]) == [-22070, 49339]
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

@@ -1,11 +1,10 @@
 from medium_316_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.removeDuplicateLetters("bcabc") == "abc"
     assert solution.removeDuplicateLetters("cbacdcbc") == "acdb"
-    
-
 
 def run_advanced_tests(solution):
     assert solution.removeDuplicateLetters('ubcjtlppya') == 'ubcjtlpya'
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.removeDuplicateLetters('wtgyjqfqor') == 'wtgyjfqor'
     assert solution.removeDuplicateLetters('a') == 'a'
     assert solution.removeDuplicateLetters('lds') == 'lds'
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

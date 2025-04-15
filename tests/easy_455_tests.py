@@ -1,11 +1,10 @@
 from easy_455_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.findContentChildren([1,2,3], [1,1]) == 1
     assert solution.findContentChildren([1,2], [1,2,3]) == 2
-    
-
 
 def run_advanced_tests(solution):
     assert solution.findContentChildren([42], [44, 48, 80, 98]) == 1
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.findContentChildren([16, 23, 24, 35, 37, 46, 59, 97], [19, 66, 97, 99]) == 4
     assert solution.findContentChildren([4, 6, 10, 20, 23, 56, 57, 80], [8, 15, 37, 45, 69]) == 5
     assert solution.findContentChildren([8, 81, 93, 96], []) == 0
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

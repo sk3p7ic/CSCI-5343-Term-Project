@@ -1,12 +1,11 @@
 from easy_942_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.diStringMatch("IDID") == [0, 4, 1, 3, 2]
     assert solution.diStringMatch("III") == [0, 1, 2, 3]
     assert solution.diStringMatch("DDI") == [3, 2, 0, 1]
-    
-
 
 def run_advanced_tests(solution):
     assert solution.diStringMatch("IDI") == [0, 3, 1, 2]
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.diStringMatch("D") == [1, 0]
     assert solution.diStringMatch("III") == [0, 1, 2, 3]
     assert solution.diStringMatch("DIDIDI") == [6, 0, 5, 1, 4, 2, 3]
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

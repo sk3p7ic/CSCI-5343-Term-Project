@@ -1,12 +1,11 @@
 from hard_630_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.scheduleCourse([[100, 200], [200, 1300], [1000, 1250], [2000, 3200]]) == 3
     assert solution.scheduleCourse([[1, 2]]) == 1
     assert solution.scheduleCourse([[3, 2], [4, 3]]) == 0
-    
-
 
 def run_advanced_tests(solution):
     assert solution.scheduleCourse([[55, 76], [96, 154], [61, 254], [75, 277], [27, 399], [44, 479], [23, 514], [28, 955]]) == 7
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.scheduleCourse([[95, 239], [84, 351], [6, 458], [18, 485], [13, 490], [39, 537], [50, 687], [63, 721]]) == 8
     assert solution.scheduleCourse([[11, 398], [71, 488], [63, 496], [54, 526], [11, 917]]) == 5
     assert solution.scheduleCourse([[35, 46]]) == 1
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')
