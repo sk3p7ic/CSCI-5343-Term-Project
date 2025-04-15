@@ -1,11 +1,10 @@
 from easy_860_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.lemonadeChange([5,5,5,10,20]) == True
     assert solution.lemonadeChange([5,5,10,10,20]) == False
-    
-
 
 def run_advanced_tests(solution):
     assert solution.lemonadeChange([10, 20, 20, 10, 10, 20, 5, 20, 20, 20]) == False
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.lemonadeChange([20, 5, 20, 10, 10, 5, 20, 20, 10, 5, 5, 5, 10, 10, 10, 5, 20, 20, 10, 10, 10, 10, 10, 20, 20, 5, 20, 10, 10, 10]) == False
     assert solution.lemonadeChange([10, 10, 10, 20, 5, 20, 10, 20, 20, 20, 20, 20, 20, 10, 5, 20, 10, 10, 5, 5, 20, 5, 20, 5, 10, 10, 5, 5, 5, 20]) == False
     assert solution.lemonadeChange([5, 20, 10, 10, 5, 5, 20, 10, 10, 10, 20, 5, 5, 10, 5, 20, 5, 5, 5, 20, 5, 10, 5, 5, 20, 5, 10, 10, 10, 10, 10, 5, 10, 10, 20, 20, 10]) == False
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

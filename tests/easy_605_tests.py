@@ -1,11 +1,10 @@
 from easy_605_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.canPlaceFlowers([1,0,0,0,1], 1) == True
     assert solution.canPlaceFlowers([1,0,0,0,1], 2) == False
-    
-
 
 def run_advanced_tests(solution):
     assert solution.canPlaceFlowers([0, 0, 1, 0, 1, 0, 0], 3) == False
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.canPlaceFlowers([1, 0, 0, 1, 1, 0, 1, 0, 1, 1], 3) == False
     assert solution.canPlaceFlowers([0, 0], 0) == True
     assert solution.canPlaceFlowers([0, 1, 1, 1, 1, 1, 1, 1, 0, 1], 4) == False
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

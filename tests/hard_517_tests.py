@@ -1,12 +1,11 @@
 from hard_517_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.findMinMoves([1, 0, 5]) == 3
     assert solution.findMinMoves([0, 3, 0]) == 2
     assert solution.findMinMoves([0, 2, 0]) == -1
-    
-
 
 def run_advanced_tests(solution):
     assert solution.findMinMoves([86085, 63081, 92523, 62834, 94292, 45356, 10810, 85316, 10785, 70039]) == -1
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.findMinMoves([87808, 86564, 13416, 75990, 18935, 16290, 35362, 6729, 77294]) == -1
     assert solution.findMinMoves([96806, 63685, 6916, 63039, 69058, 26272, 79554, 91198, 94685]) == -1
     assert solution.findMinMoves([64546, 23822, 49002, 46475, 85730, 63282, 31957, 30123, 64487, 67636]) == 33024
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

@@ -1,11 +1,10 @@
 from medium_179_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.largestNumber([10, 2]) == '210'
     assert solution.largestNumber([3, 30, 34, 5, 9]) == '9534330'
-    
-
 
 def run_advanced_tests(solution):
     assert solution.largestNumber([57, 79, 87, 61, 72]) == '8779726157'
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.largestNumber([10, 8, 60, 70, 35]) == '870603510'
     assert solution.largestNumber([56, 40, 89]) == '895640'
     assert solution.largestNumber([19]) == '19'
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

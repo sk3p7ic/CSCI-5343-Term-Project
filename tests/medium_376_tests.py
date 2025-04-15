@@ -1,12 +1,11 @@
 from medium_376_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.wiggleMaxLength([1, 7, 4, 9, 2, 5]) == 6
     assert solution.wiggleMaxLength([1, 17, 5, 10, 13, 15, 10, 5, 16, 8]) == 7
     assert solution.wiggleMaxLength([1, 2, 3, 4, 5, 6, 7, 8, 9]) == 2
-    
-
 
 def run_advanced_tests(solution):
     assert solution.wiggleMaxLength([71, 24, 67, 64, 85, 65, 39, 68, 29, 80]) == 9
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.wiggleMaxLength([68, 57, 58, 2, 36, 22, 88, 25, 9, 38]) == 9
     assert solution.wiggleMaxLength([96, 17, 94, 99, 39]) == 4
     assert solution.wiggleMaxLength([52, 39, 43, 22]) == 4
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

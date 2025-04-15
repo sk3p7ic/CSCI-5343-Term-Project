@@ -1,11 +1,10 @@
 from medium_11_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.maxArea([1,8,6,2,5,4,8,3,7]) == 49
     assert solution.maxArea([1,1]) == 1
-    
-
 
 def run_advanced_tests(solution):
     assert solution.maxArea([6728, 372, 5812]) == 11624
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.maxArea([8785, 2469, 4802, 3718, 1575, 3705, 3464, 891, 7113]) == 56904
     assert solution.maxArea([6963, 146, 2745, 6377, 3632, 5923]) == 29615
     assert solution.maxArea([1889, 1895, 4957, 4119, 5059, 1783, 8608, 7787]) == 24785
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

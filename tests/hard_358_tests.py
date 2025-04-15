@@ -1,12 +1,11 @@
 from hard_358_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.rearrangeString('aabbcc', 3) == 'abcabc'
     assert solution.rearrangeString('aaabc', 3) == ''
     assert solution.rearrangeString('aaadbbcc', 2) == 'abacabcd'
-    
-
 
 def run_advanced_tests(solution):
     assert solution.rearrangeString('by', 0) == 'by'
@@ -101,6 +100,7 @@ def run_advanced_tests(solution):
     assert solution.rearrangeString('rox', 0) == 'orx'
     assert solution.rearrangeString('be', 1) == 'be'
     assert solution.rearrangeString('hpvtq', 2) == 'hpqtv'
+        
 
 if __name__ == '__main__':
     import sys
@@ -119,6 +119,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

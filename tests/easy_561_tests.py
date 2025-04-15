@@ -1,11 +1,10 @@
 from easy_561_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.arrayPairSum([1, 4, 3, 2]) == 4
     assert solution.arrayPairSum([6, 2, 6, 5, 1, 2]) == 9
-    
-
 
 def run_advanced_tests(solution):
     assert solution.arrayPairSum([1375, -1930, 181, 1787, 8555, -4929, -9209, -8304, -3311, -3433, -973, -3730, -6059, 478, -2362, -6069, -7004, 1119]) == -28156
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.arrayPairSum([4212, -5152, 6134, -9170, -8267, 9608, -5113, -8864, 8093, -3331]) == -10245
     assert solution.arrayPairSum([1260, -9341, -2533, -361, 9813, -1780, 6864, -5248]) == -5371
     assert solution.arrayPairSum([-5673, 8447, -2794, -5585, -4564, 6780]) == -3457
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

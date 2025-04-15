@@ -1,12 +1,11 @@
 from hard_44_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.isMatch("aa", "a") == False
     assert solution.isMatch("aa", "*") == True
     assert solution.isMatch("cb", "?a") == False
-    
-
 
 def run_advanced_tests(solution):
     assert solution.isMatch('glqoboilgm', '*zxmbgclk?') == False
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.isMatch('bvpkm', 'cpsrhmsioi') == False
     assert solution.isMatch('vbavikffbu', 'sd*') == False
     assert solution.isMatch('rzv', 'hfvhzxdbx') == False
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

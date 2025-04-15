@@ -1,11 +1,10 @@
 from easy_976_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.largestPerimeter([2, 1, 2]) == 5
     assert solution.largestPerimeter([1, 2, 1, 10]) == 0
-    
-
 
 def run_advanced_tests(solution):
     assert solution.largestPerimeter([434493, 520440, 616438, 628268, 641965, 733236, 911253, 914728]) == 2559217
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.largestPerimeter([137240, 213710, 417764, 457003, 552832, 605031, 648039, 659635, 980060]) == 2287734
     assert solution.largestPerimeter([198925, 202797, 480073, 515209]) == 1198079
     assert solution.largestPerimeter([30869, 575220, 683820, 722291]) == 1981331
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

@@ -1,11 +1,10 @@
 from easy_409_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.longestPalindrome("abccccdd") == 7
     assert solution.longestPalindrome("a") == 1
-    
-
 
 def run_advanced_tests(solution):
     assert solution.longestPalindrome("GxyDLlAh") == 1
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.longestPalindrome("uCKQvx") == 1
     assert solution.longestPalindrome("UVtYfIQsyU") == 3
     assert solution.longestPalindrome("VAGueWdib") == 1
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

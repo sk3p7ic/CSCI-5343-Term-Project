@@ -1,12 +1,11 @@
 from medium_334_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.increasingTriplet([1,2,3,4,5]) == True
     assert solution.increasingTriplet([5,4,3,2,1]) == False
     assert solution.increasingTriplet([2,1,5,0,4,6]) == True
-    
-
 
 def run_advanced_tests(solution):
     assert solution.increasingTriplet([71, 63, 86]) == False
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.increasingTriplet([15, 70, 5, 95]) == True
     assert solution.increasingTriplet([9, 31, 4, 85, 93, 83, 92]) == True
     assert solution.increasingTriplet([80, 20, 59, 34, 97, 19, 35, 72, 93]) == True
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

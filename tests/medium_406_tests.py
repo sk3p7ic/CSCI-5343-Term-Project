@@ -1,11 +1,10 @@
 from medium_406_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.reconstructQueue([[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]) == [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
     assert solution.reconstructQueue([[6,0], [5,0], [4,0], [3,2], [2,2], [1,4]]) == [[4,0], [5,0], [2,2], [3,2], [1,4], [6,0]]
-    
-
 
 def run_advanced_tests(solution):
     assert solution.reconstructQueue([[95, 1], [94, 4], [88, 3], [76, 4], [22, 0], [18, 2], [15, 2], [12, 2], [9, 5]]) == [[22, 0], [95, 1], [12, 2], [15, 2], [18, 2], [9, 5], [94, 4], [88, 3], [76, 4]]
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.reconstructQueue([[90, 1], [82, 0], [44, 0], [34, 0], [17, 3]]) == [[34, 0], [44, 0], [82, 0], [17, 3], [90, 1]]
     assert solution.reconstructQueue([[99, 0], [99, 3], [81, 0], [63, 3], [20, 1], [14, 2], [13, 0], [13, 6]]) == [[13, 0], [81, 0], [20, 1], [14, 2], [99, 0], [99, 3], [13, 6], [63, 3]]
     assert solution.reconstructQueue([[98, 0], [96, 0], [92, 5], [71, 1], [68, 0], [60, 2], [16, 6], [7, 4], [1, 0]]) == [[1, 0], [68, 0], [96, 0], [60, 2], [71, 1], [7, 4], [98, 0], [92, 5], [16, 6]]
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

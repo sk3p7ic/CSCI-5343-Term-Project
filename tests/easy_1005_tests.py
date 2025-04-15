@@ -1,12 +1,11 @@
 from easy_1005_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.largestSumAfterKNegations([4,2,3], 1) == 5
     assert solution.largestSumAfterKNegations([3,-1,0,2], 3) == 6
     assert solution.largestSumAfterKNegations([2,-3,-1,5,-4], 2) == 13
-    
-
 
 def run_advanced_tests(solution):
     assert solution.largestSumAfterKNegations([-25, 64, 53, -59, -31, -75], 92) == 307
@@ -109,6 +108,7 @@ def run_advanced_tests(solution):
     assert solution.largestSumAfterKNegations([-5, 28], 71) == 33
     assert solution.largestSumAfterKNegations([14, 49, 0, 18], 3) == 81
     assert solution.largestSumAfterKNegations([-14], 94) == -14
+        
 
 if __name__ == '__main__':
     import sys
@@ -127,6 +127,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')

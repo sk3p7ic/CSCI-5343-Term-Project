@@ -1,11 +1,10 @@
 from hard_527_canon import Solution as SolutionCanon
 
+
 def run_basic_tests(solution):
     
     assert solution.wordsAbbreviation(["like","god","internal","me","internet","interval","intension","face","intrusion"]) == ["l2e","god","internal","me","i6t","interval","inte4n","f2e","intr4n"]
     assert solution.wordsAbbreviation(["aa","aaa"]) == ["aa","aaa"]
-    
-
 
 def run_advanced_tests(solution):
     assert solution.wordsAbbreviation(['ggkgzjpf', 'xovkwx', 'olbn']) == ['g6f', 'x4x', 'o2n']
@@ -108,6 +107,7 @@ def run_advanced_tests(solution):
     assert solution.wordsAbbreviation(['vkvwezvbm', 'tk', 'orwuwmm', 'rimo', 'n', 'hn', 'hznj', 'j', 'bxmbl']) == ['v7m', 'tk', 'o5m', 'r2o', 'n', 'hn', 'h2j', 'j', 'b3l']
     assert solution.wordsAbbreviation(['kyfubgfav', 'yudbg', 'i']) == ['k7v', 'y3g', 'i']
     assert solution.wordsAbbreviation(['fifzxbyya', 'dexmf', 'qyvvwua', 'ilex', 'aw', 'eeaxket', 'pdrwchmuw', 'fukvia', 'gowagjkzm']) == ['f7a', 'd3f', 'q5a', 'i2x', 'aw', 'e5t', 'p7w', 'f4a', 'g7m']
+        
 
 if __name__ == '__main__':
     import sys
@@ -126,6 +126,6 @@ if __name__ == '__main__':
             run_advanced_tests(canon)
             end = time.time()
             canon_times.append(end - start)
-        
+
         canon_avg = statistics.mean(canon_times)
         print(f'Canonical Average Time: {canon_avg:.4E}')
