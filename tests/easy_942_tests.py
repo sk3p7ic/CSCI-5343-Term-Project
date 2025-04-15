@@ -1,0 +1,132 @@
+from easy_942_canon import Solution as SolutionCanon
+
+def run_basic_tests(solution):
+    
+    assert solution.diStringMatch("IDID") == [0, 4, 1, 3, 2]
+    assert solution.diStringMatch("III") == [0, 1, 2, 3]
+    assert solution.diStringMatch("DDI") == [3, 2, 0, 1]
+    
+
+
+def run_advanced_tests(solution):
+    assert solution.diStringMatch("IDI") == [0, 3, 1, 2]
+    assert solution.diStringMatch("DIDDIIII") == [8, 0, 7, 6, 1, 2, 3, 4, 5]
+    assert solution.diStringMatch("IIII") == [0, 1, 2, 3, 4]
+    assert solution.diStringMatch("IIIDI") == [0, 1, 2, 5, 3, 4]
+    assert solution.diStringMatch("DII") == [3, 0, 1, 2]
+    assert solution.diStringMatch("I") == [0, 1]
+    assert solution.diStringMatch("DIIIDIDD") == [8, 0, 1, 2, 7, 3, 6, 5, 4]
+    assert solution.diStringMatch("IIDII") == [0, 1, 5, 2, 3, 4]
+    assert solution.diStringMatch("IIIDDID") == [0, 1, 2, 7, 6, 3, 5, 4]
+    assert solution.diStringMatch("IDIDID") == [0, 6, 1, 5, 2, 4, 3]
+    assert solution.diStringMatch("DDDIDDDI") == [8, 7, 6, 0, 5, 4, 3, 1, 2]
+    assert solution.diStringMatch("IDIIIID") == [0, 7, 1, 2, 3, 4, 6, 5]
+    assert solution.diStringMatch("IDDDD") == [0, 5, 4, 3, 2, 1]
+    assert solution.diStringMatch("DIDDD") == [5, 0, 4, 3, 2, 1]
+    assert solution.diStringMatch("DDIDIIID") == [8, 7, 0, 6, 1, 2, 3, 5, 4]
+    assert solution.diStringMatch("DDDD") == [4, 3, 2, 1, 0]
+    assert solution.diStringMatch("IDIDDDDIDD") == [0, 10, 1, 9, 8, 7, 6, 2, 5, 4, 3]
+    assert solution.diStringMatch("DIDIDDDIID") == [10, 0, 9, 1, 8, 7, 6, 2, 3, 5, 4]
+    assert solution.diStringMatch("IIDIDIDD") == [0, 1, 8, 2, 7, 3, 6, 5, 4]
+    assert solution.diStringMatch("DID") == [3, 0, 2, 1]
+    assert solution.diStringMatch("IDIDID") == [0, 6, 1, 5, 2, 4, 3]
+    assert solution.diStringMatch("DIIIDIDD") == [8, 0, 1, 2, 7, 3, 6, 5, 4]
+    assert solution.diStringMatch("DDDDDDIDD") == [9, 8, 7, 6, 5, 4, 0, 3, 2, 1]
+    assert solution.diStringMatch("DDDDI") == [5, 4, 3, 2, 0, 1]
+    assert solution.diStringMatch("DDIIID") == [6, 5, 0, 1, 2, 4, 3]
+    assert solution.diStringMatch("IID") == [0, 1, 3, 2]
+    assert solution.diStringMatch("IDDDIDI") == [0, 7, 6, 5, 1, 4, 2, 3]
+    assert solution.diStringMatch("DIIDIDII") == [8, 0, 1, 7, 2, 6, 3, 4, 5]
+    assert solution.diStringMatch("IIIDDDIID") == [0, 1, 2, 9, 8, 7, 3, 4, 6, 5]
+    assert solution.diStringMatch("IIDII") == [0, 1, 5, 2, 3, 4]
+    assert solution.diStringMatch("DDIIDD") == [6, 5, 0, 1, 4, 3, 2]
+    assert solution.diStringMatch("DII") == [3, 0, 1, 2]
+    assert solution.diStringMatch("IDIDIDIID") == [0, 9, 1, 8, 2, 7, 3, 4, 6, 5]
+    assert solution.diStringMatch("IIIDIDID") == [0, 1, 2, 8, 3, 7, 4, 6, 5]
+    assert solution.diStringMatch("DIDDIIDDI") == [9, 0, 8, 7, 1, 2, 6, 5, 3, 4]
+    assert solution.diStringMatch("IDDDIID") == [0, 7, 6, 5, 1, 2, 4, 3]
+    assert solution.diStringMatch("IIDDDID") == [0, 1, 7, 6, 5, 2, 4, 3]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("DII") == [3, 0, 1, 2]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("DD") == [2, 1, 0]
+    assert solution.diStringMatch("IIIIIID") == [0, 1, 2, 3, 4, 5, 7, 6]
+    assert solution.diStringMatch("DIIID") == [5, 0, 1, 2, 4, 3]
+    assert solution.diStringMatch("DIIIID") == [6, 0, 1, 2, 3, 5, 4]
+    assert solution.diStringMatch("DIDIIIID") == [8, 0, 7, 1, 2, 3, 4, 6, 5]
+    assert solution.diStringMatch("DD") == [2, 1, 0]
+    assert solution.diStringMatch("IDIID") == [0, 5, 1, 2, 4, 3]
+    assert solution.diStringMatch("IIDI") == [0, 1, 4, 2, 3]
+    assert solution.diStringMatch("IIDIDI") == [0, 1, 6, 2, 5, 3, 4]
+    assert solution.diStringMatch("IIIIDIIIDD") == [0, 1, 2, 3, 10, 4, 5, 6, 9, 8, 7]
+    assert solution.diStringMatch("DIDDI") == [5, 0, 4, 3, 1, 2]
+    assert solution.diStringMatch("IDIDID") == [0, 6, 1, 5, 2, 4, 3]
+    assert solution.diStringMatch("DIIDDIDD") == [8, 0, 1, 7, 6, 2, 5, 4, 3]
+    assert solution.diStringMatch("DDIIIIDID") == [9, 8, 0, 1, 2, 3, 7, 4, 6, 5]
+    assert solution.diStringMatch("DDD") == [3, 2, 1, 0]
+    assert solution.diStringMatch("DIIIIIDII") == [9, 0, 1, 2, 3, 4, 8, 5, 6, 7]
+    assert solution.diStringMatch("IIDDI") == [0, 1, 5, 4, 2, 3]
+    assert solution.diStringMatch("IIDDIIIII") == [0, 1, 9, 8, 2, 3, 4, 5, 6, 7]
+    assert solution.diStringMatch("II") == [0, 1, 2]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("DDIDIIDIID") == [10, 9, 0, 8, 1, 2, 7, 3, 4, 6, 5]
+    assert solution.diStringMatch("IIIIIIDID") == [0, 1, 2, 3, 4, 5, 9, 6, 8, 7]
+    assert solution.diStringMatch("IDDIDDIIII") == [0, 10, 9, 1, 8, 7, 2, 3, 4, 5, 6]
+    assert solution.diStringMatch("DDDDDDID") == [8, 7, 6, 5, 4, 3, 0, 2, 1]
+    assert solution.diStringMatch("IDIIDIDDII") == [0, 10, 1, 2, 9, 3, 8, 7, 4, 5, 6]
+    assert solution.diStringMatch("DDIIDDDDI") == [9, 8, 0, 1, 7, 6, 5, 4, 2, 3]
+    assert solution.diStringMatch("IIIDDDID") == [0, 1, 2, 8, 7, 6, 3, 5, 4]
+    assert solution.diStringMatch("IIIDI") == [0, 1, 2, 5, 3, 4]
+    assert solution.diStringMatch("IDII") == [0, 4, 1, 2, 3]
+    assert solution.diStringMatch("IIIID") == [0, 1, 2, 3, 5, 4]
+    assert solution.diStringMatch("IIDIDIDDID") == [0, 1, 10, 2, 9, 3, 8, 7, 4, 6, 5]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("DDIDDIDI") == [8, 7, 0, 6, 5, 1, 4, 2, 3]
+    assert solution.diStringMatch("DDDIIDI") == [7, 6, 5, 0, 1, 4, 2, 3]
+    assert solution.diStringMatch("DDDIDI") == [6, 5, 4, 0, 3, 1, 2]
+    assert solution.diStringMatch("I") == [0, 1]
+    assert solution.diStringMatch("DDDIDII") == [7, 6, 5, 0, 4, 1, 2, 3]
+    assert solution.diStringMatch("IDIIDD") == [0, 6, 1, 2, 5, 4, 3]
+    assert solution.diStringMatch("DIID") == [4, 0, 1, 3, 2]
+    assert solution.diStringMatch("IID") == [0, 1, 3, 2]
+    assert solution.diStringMatch("IIIIIII") == [0, 1, 2, 3, 4, 5, 6, 7]
+    assert solution.diStringMatch("III") == [0, 1, 2, 3]
+    assert solution.diStringMatch("IDIDDIDI") == [0, 8, 1, 7, 6, 2, 5, 3, 4]
+    assert solution.diStringMatch("IDII") == [0, 4, 1, 2, 3]
+    assert solution.diStringMatch("DDIII") == [5, 4, 0, 1, 2, 3]
+    assert solution.diStringMatch("DI") == [2, 0, 1]
+    assert solution.diStringMatch("IDIDDDII") == [0, 8, 1, 7, 6, 5, 2, 3, 4]
+    assert solution.diStringMatch("DDDID") == [5, 4, 3, 0, 2, 1]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("II") == [0, 1, 2]
+    assert solution.diStringMatch("ID") == [0, 2, 1]
+    assert solution.diStringMatch("IDIIDDDIID") == [0, 10, 1, 2, 9, 8, 7, 3, 4, 6, 5]
+    assert solution.diStringMatch("IDIDI") == [0, 5, 1, 4, 2, 3]
+    assert solution.diStringMatch("DD") == [2, 1, 0]
+    assert solution.diStringMatch("IIDDI") == [0, 1, 5, 4, 2, 3]
+    assert solution.diStringMatch("IDDIDDDII") == [0, 9, 8, 1, 7, 6, 5, 2, 3, 4]
+    assert solution.diStringMatch("D") == [1, 0]
+    assert solution.diStringMatch("III") == [0, 1, 2, 3]
+    assert solution.diStringMatch("DIDIDI") == [6, 0, 5, 1, 4, 2, 3]
+
+if __name__ == '__main__':
+    import sys
+    if sys.argv[1] == 'test':
+        canon = SolutionCanon()
+        run_basic_tests(canon)
+        run_advanced_tests(canon)
+    if sys.argv[1] == 'time':
+        import time, statistics
+        canon_times = []
+
+        canon = SolutionCanon()
+        for _ in range(int(sys.argv[2])):
+            start = time.time()
+            run_basic_tests(canon)
+            run_advanced_tests(canon)
+            end = time.time()
+            canon_times.append(end - start)
+        
+        canon_avg = statistics.mean(canon_times)
+        print(f'Canonical Average Time: {canon_avg:.4E}')
