@@ -12,7 +12,8 @@ fi
 
 
 echo ">>> Running extractor script."
-deno --allow-write ./dataset_extractor.ts
+#deno --allow-write ./dataset_extractor.ts
+python3 dataset_extractor.py
 rm "$filename"
 
 echo ">>> Running tests."
