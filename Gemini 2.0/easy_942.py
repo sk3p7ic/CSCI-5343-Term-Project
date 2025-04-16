@@ -1,5 +1,6 @@
 class Solution:
-    def reconstructPermutation(self, s: str) -> list[int]:
+    # def reconstructPermutation(self, s: str) -> list[int]:
+    def diStringMatch(self, s: str) -> list[int]:
         n = len(s)
         perm = [0] * (n + 1)
         low = 0

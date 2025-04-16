@@ -114,19 +114,16 @@ def run_advanced_tests(solution):
 
 if __name__ == '__main__':
     import sys
+    problem_id = 527
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
-            solvers.extend([SolutionChatGPT(), #SolutionClaude(),
-                            SolutionGemini()])
+            solvers.extend([SolutionChatGPT(), SolutionGemini()])
         for solver in solvers:
             run_basic_tests(solver)
             run_advanced_tests(solver)
     elif sys.argv[1] == 'time':
         import time, statistics
-        if sys.argv[2] == 'claude':
-            print(f'hard_527,{sys.argv[2]},------')
-            sys.exit(0)
         solver = {
             'canon': SolutionCanon,
             'chatgpt': SolutionChatGPT,
@@ -136,6 +133,10 @@ if __name__ == '__main__':
         times = []
 
         print(f'hard_527,{sys.argv[2]},', end='')
+        if problem_id == 527 and sys.argv[2] == 'claude':
+            print('-- NR --')
+            sys.exit(0)
+
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
@@ -145,7 +146,8 @@ if __name__ == '__main__':
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {err}', file=sys.stderr)
-            print('------')
+            print('-- IR --')
+            sys.exit(0)
 
         avg_time = statistics.mean(times)
         print(f'{avg_time:.4E}')
