@@ -1,4 +1,7 @@
 from easy_942_canon import Solution as SolutionCanon
+from chatgpt_easy_942 import Solution as SolutionChatGPT
+from claude_easy_942 import Solution as SolutionClaude
+from gemini_easy_942 import Solution as SolutionGemini
 
 
 def run_basic_tests(solution):
@@ -113,10 +116,14 @@ def run_advanced_tests(solution):
 if __name__ == '__main__':
     import sys
     if sys.argv[1] == 'test':
-        canon = SolutionCanon()
-        run_basic_tests(canon)
-        run_advanced_tests(canon)
-    if sys.argv[1] == 'time':
+        solvers = [SolutionCanon()]
+        if len(sys.argv) == 3 and sys.argv[2] == 'all':
+            solvers.extend([SolutionChatGPT(), SolutionClaude(),
+                            SolutionGemini()])
+        for solver in solvers:
+            run_basic_tests(solver)
+            run_advanced_tests(solver)
+    elif sys.argv[1] == 'time':
         import time, statistics
         canon_times = []
 

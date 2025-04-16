@@ -39,18 +39,26 @@ class Problem:
     diff: str
 
     def __repr__(self):
+        modname = f'{self.diff.lower()}_{self.idx}'
         return f'''
-from {self.diff.lower()}_{self.idx}_canon import Solution as SolutionCanon
+from {modname}_canon import Solution as SolutionCanon
+from chatgpt_{modname} import Solution as SolutionChatGPT
+from claude_{modname} import Solution as SolutionClaude
+from gemini_{modname} import Solution as SolutionGemini
 
 {self.tests}
 
 if __name__ == '__main__':
     import sys
     if sys.argv[1] == 'test':
-        canon = SolutionCanon()
-        run_basic_tests(canon)
-        run_advanced_tests(canon)
-    if sys.argv[1] == 'time':
+        solvers = [SolutionCanon()]
+        if len(sys.argv) == 3 and sys.argv[2] == 'all':
+            solvers.extend([SolutionChatGPT(), SolutionClaude(),
+                            SolutionGemini()])
+        for solver in solvers:
+            run_basic_tests(solver)
+            run_advanced_tests(solver)
+    elif sys.argv[1] == 'time':
         import time, statistics
         canon_times = []
 
