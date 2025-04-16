@@ -1,5 +1,6 @@
 class Solution:
-    def smallestSubsequence(self, s: str) -> str:
+    # def smallestSubsequence(self, s: str) -> str:
+    def removeDuplicateLetters(self, s: str) -> str:
         last_occurrence = {}
         for i, char in enumerate(s):
             last_occurrence[char] = i

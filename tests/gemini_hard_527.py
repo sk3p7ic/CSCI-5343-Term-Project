@@ -1,7 +1,8 @@
 from collections import defaultdict
 
 class Solution:
-    def minimizeAbbreviations(self, words: list[str]) -> list[str]:
+    #def minimizeAbbreviations(self, words: list[str]) -> list[str]:
+    def wordsAbbreviation(self, words: list[str]) -> list[str]:
         n = len(words)
         if n <= 1:
             return words

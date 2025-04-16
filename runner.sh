@@ -10,10 +10,9 @@ for fname in *tests*.py; do
 done
 
 echo ">>> Running all tests."
-cd tests
 for fname in *tests*.py; do
     if [ -f "$fname" ]; then
-        echo "Running $fname"
+        echo "Running all in $fname"
         python3 "$fname" test all
     fi
 done

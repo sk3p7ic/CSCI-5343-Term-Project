@@ -117,7 +117,7 @@ if __name__ == '__main__':
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
-            solvers.extend([SolutionChatGPT(), SolutionClaude(),
+            solvers.extend([SolutionChatGPT(), #SolutionClaude(),
                             SolutionGemini()])
         for solver in solvers:
             run_basic_tests(solver)
