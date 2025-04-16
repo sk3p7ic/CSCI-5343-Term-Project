@@ -60,18 +60,28 @@ if __name__ == '__main__':
             run_advanced_tests(solver)
     elif sys.argv[1] == 'time':
         import time, statistics
-        canon_times = []
+        solver = {{
+            'canon': SolutionCanon,
+            'chatgpt': SolutionChatGPT,
+            'claude': SolutionClaude,
+            'gemini': SolutionGemini,
+        }}[sys.argv[2]]()
+        times = []
 
-        canon = SolutionCanon()
-        for _ in range(int(sys.argv[2])):
-            start = time.time()
-            run_basic_tests(canon)
-            run_advanced_tests(canon)
-            end = time.time()
-            canon_times.append(end - start)
+        print(f'{modname},{{sys.argv[2]}},', end='')
+        try:
+            for _ in range(int(sys.argv[3])):
+                start = time.time()
+                run_basic_tests(solver)
+                run_advanced_tests(solver)
+                end = time.time()
+                times.append(end - start)
+        except AssertionError as err:
+            print(f'Assertion Failed: {{err}}', file=sys.stderr)
+            print('------')
 
-        canon_avg = statistics.mean(canon_times)
-        print(f'Canonical Average Time: {{canon_avg:.4E}}')
+        avg_time = statistics.mean(times)
+        print(f'{{avg_time:.4E}}')
 '''.strip()
 
     def getSoluString(self) -> str:
