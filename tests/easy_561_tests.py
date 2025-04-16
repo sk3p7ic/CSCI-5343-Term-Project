@@ -1,4 +1,7 @@
 from easy_561_canon import Solution as SolutionCanon
+from chatgpt_easy_561 import Solution as SolutionChatGPT
+from claude_easy_561 import Solution as SolutionClaude
+from gemini_easy_561 import Solution as SolutionGemini
 
 
 def run_basic_tests(solution):
@@ -112,20 +115,34 @@ def run_advanced_tests(solution):
 if __name__ == '__main__':
     import sys
     if sys.argv[1] == 'test':
-        canon = SolutionCanon()
-        run_basic_tests(canon)
-        run_advanced_tests(canon)
-    if sys.argv[1] == 'time':
+        solvers = [SolutionCanon()]
+        if len(sys.argv) == 3 and sys.argv[2] == 'all':
+            solvers.extend([SolutionChatGPT(), SolutionClaude(),
+                            SolutionGemini()])
+        for solver in solvers:
+            run_basic_tests(solver)
+            run_advanced_tests(solver)
+    elif sys.argv[1] == 'time':
         import time, statistics
-        canon_times = []
+        solver = {
+            'canon': SolutionCanon,
+            'chatgpt': SolutionChatGPT,
+            'claude': SolutionClaude,
+            'gemini': SolutionGemini,
+        }[sys.argv[2]]()
+        times = []
 
-        canon = SolutionCanon()
-        for _ in range(int(sys.argv[2])):
-            start = time.time()
-            run_basic_tests(canon)
-            run_advanced_tests(canon)
-            end = time.time()
-            canon_times.append(end - start)
+        print(f'easy_561,{sys.argv[2]},', end='')
+        try:
+            for _ in range(int(sys.argv[3])):
+                start = time.time()
+                run_basic_tests(solver)
+                run_advanced_tests(solver)
+                end = time.time()
+                times.append(end - start)
+        except AssertionError as err:
+            print(f'Assertion Failed: {err}', file=sys.stderr)
+            print('------')
 
-        canon_avg = statistics.mean(canon_times)
-        print(f'Canonical Average Time: {canon_avg:.4E}')
+        avg_time = statistics.mean(times)
+        print(f'{avg_time:.4E}')
