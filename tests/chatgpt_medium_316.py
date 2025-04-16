@@ -12,5 +12,5 @@ class Solution:
                 seen.remove(stack.pop())
             stack.append(ch)
             seen.add(ch)
-            
+
         return "".join(stack)

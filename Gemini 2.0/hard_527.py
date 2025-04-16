@@ -1,7 +1,9 @@
 from collections import defaultdict
 
+
 class Solution:
-    def minimizeAbbreviations(self, words: list[str]) -> list[str]:
+    # def minimizeAbbreviations(self, words: list[str]) -> list[str]:
+    def wordsAbbreviation(self, words: list[str]) -> list[str]:
         n = len(words)
         if n <= 1:
             return words
@@ -18,7 +20,8 @@ class Solution:
                 if len(abbrev_indices) > 1:
                     collisions = True
                     for index in abbrev_indices:
-                        abbrevs[index] = self.abbreviate(words[index], len(abbrevs[index]) - 2 + 1)
+                        abbrevs[index] = self.abbreviate(
+                            words[index], len(abbrevs[index]) - 2 + 1)
                     break
             if not collisions:
                 break

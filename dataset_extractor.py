@@ -40,6 +40,9 @@ class Problem:
 
     def __repr__(self):
         modname = f'{self.diff.lower()}_{self.idx}'
+        solvers = ['SolutionChatGPT()', 'SolutionGemini()', 'SolutionClaude()']
+        if self.idx == 527:
+            solvers.pop()  # Remove Clause (it's broken)
         return f'''
 from {modname}_canon import Solution as SolutionCanon
 from chatgpt_{modname} import Solution as SolutionChatGPT
@@ -50,11 +53,11 @@ from gemini_{modname} import Solution as SolutionGemini
 
 if __name__ == '__main__':
     import sys
+    problem_id = {self.idx}
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
-            solvers.extend([SolutionChatGPT(), SolutionClaude(),
-                            SolutionGemini()])
+            solvers.extend([{', '.join(solvers)}])
         for solver in solvers:
             run_basic_tests(solver)
             run_advanced_tests(solver)
@@ -69,6 +72,10 @@ if __name__ == '__main__':
         times = []
 
         print(f'{modname},{{sys.argv[2]}},', end='')
+        if problem_id == 527 and sys.argv[2] == 'claude':
+            print('-- NR --')
+            sys.exit(0)
+
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
@@ -78,7 +85,8 @@ if __name__ == '__main__':
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {{err}}', file=sys.stderr)
-            print('------')
+            print('-- IR --')
+            sys.exit(0)
 
         avg_time = statistics.mean(times)
         print(f'{{avg_time:.4E}}')

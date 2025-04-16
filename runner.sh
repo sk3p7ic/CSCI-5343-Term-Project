@@ -18,12 +18,15 @@ for fname in *tests*.py; do
 done
 
 echo ">>> Gathering average execution times."
+epochs=100000
+rm *.bak
+mv times.csv times.csv.bak
 for fname in *tests*.py; do
     if [ -f "$fname" ]; then
         echo "Running $fname"
-        python3 "$fname" time canon 10 >> ../res.txt
-        python3 "$fname" time chatgpt 10 >> ../res.txt
-        python3 "$fname" time claude 10 >> ../res.txt
-        python3 "$fname" time gemini 10 >> ../res.txt
+        python3 "$fname" time canon "$epochs" >> ../times.csv
+        python3 "$fname" time chatgpt "$epochs" >> ../times.csv
+        python3 "$fname" time claude "$epochs" >> ../times.csv
+        python3 "$fname" time gemini "$epochs" >> ../times.csv
     fi
 done
