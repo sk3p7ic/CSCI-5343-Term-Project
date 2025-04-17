@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.removeKdigits('84', 1) == '4'
     assert solution.removeKdigits('9000', 4) == '0'
     assert solution.removeKdigits('788', 1) == '78'
+
+def run_timed_tests(solution):
+    assert solution.removeKdigits('3448', 1) == '344'
+    assert solution.removeKdigits('777462', 5) == '2'
+    assert solution.removeKdigits('878869', 2) == '7869'
+    assert solution.removeKdigits('9482', 2) == '42'
+    assert solution.removeKdigits('4', 1) == '0'
+    assert solution.removeKdigits('96', 2) == '0'
+    assert solution.removeKdigits('487148', 1) == '47148'
+    assert solution.removeKdigits('939', 2) == '3'
+    assert solution.removeKdigits('69', 2) == '0'
+    assert solution.removeKdigits('19615', 4) == '1'
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

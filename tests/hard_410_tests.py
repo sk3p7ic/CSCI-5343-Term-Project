@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.splitArray([319, 819, 350, 834, 782, 242, 349, 637, 956, 519], 2) == 3104
     assert solution.splitArray([511, 902], 2) == 902
     assert solution.splitArray([441, 439, 67, 584, 163, 522], 3) == 880
+
+def run_timed_tests(solution):
+    assert solution.splitArray([681, 630, 94, 58, 88, 835, 727, 989], 5) == 989
+    assert solution.splitArray([313, 711, 755, 856, 593], 1) == 3228
+    assert solution.splitArray([893, 865, 255, 469, 370, 566], 2) == 1758
+    assert solution.splitArray([934, 53, 66, 283, 149, 401], 6) == 934
+    assert solution.splitArray([21, 469, 787, 734, 19, 401, 639, 484], 8) == 787
+    assert solution.splitArray([892, 492, 306, 699, 16, 43, 602, 42, 925, 861], 7) == 925
+    assert solution.splitArray([181], 1) == 181
+    assert solution.splitArray([763, 487, 674, 284, 566, 807, 371, 68], 1) == 4020
+    assert solution.splitArray([242, 329, 439, 127, 42, 331, 816], 1) == 2326
+    assert solution.splitArray([711, 681, 355, 37, 476, 753], 1) == 3013
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

@@ -112,6 +112,18 @@ def run_advanced_tests(solution):
     assert solution.maxProfit([6018, 7445, 9741, 2454]) == 3723
     assert solution.maxProfit([3443, 9234, 9851]) == 6408
     assert solution.maxProfit([6814]) == 0
+
+def run_timed_tests(solution):
+    assert solution.maxProfit([6833, 4016, 3340, 9155]) == 5815
+    assert solution.maxProfit([3803, 8280, 4943, 4289, 7018, 2284, 7118, 3127, 8286, 2506]) == 17199
+    assert solution.maxProfit([9919, 9286, 5772, 1167, 5751, 2808, 6582, 2194, 267]) == 8358
+    assert solution.maxProfit([2122, 7868, 4038, 5040, 6127]) == 7835
+    assert solution.maxProfit([5140, 3521, 5338, 4001, 2055]) == 1817
+    assert solution.maxProfit([8964, 1126, 1634, 415, 4105, 8816, 2168, 154]) == 8909
+    assert solution.maxProfit([9620, 6550, 63, 1816, 7212, 7282]) == 7219
+    assert solution.maxProfit([8666, 7442, 1634, 7022, 4559, 4530]) == 5388
+    assert solution.maxProfit([7979, 5825, 9682, 5339, 8244, 196, 8042, 4399, 1896]) == 14608
+    assert solution.maxProfit([2199, 3649]) == 1450
         
 
 if __name__ == '__main__':
@@ -142,8 +154,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

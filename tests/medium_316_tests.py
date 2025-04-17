@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.removeDuplicateLetters('wtgyjqfqor') == 'wtgyjfqor'
     assert solution.removeDuplicateLetters('a') == 'a'
     assert solution.removeDuplicateLetters('lds') == 'lds'
+
+def run_timed_tests(solution):
+    assert solution.removeDuplicateLetters('ubcjtlppya') == 'ubcjtlpya'
+    assert solution.removeDuplicateLetters('lr') == 'lr'
+    assert solution.removeDuplicateLetters('uckut') == 'ckut'
+    assert solution.removeDuplicateLetters('kqyz') == 'kqyz'
+    assert solution.removeDuplicateLetters('mxflghr') == 'mxflghr'
+    assert solution.removeDuplicateLetters('wvpbwarj') == 'vpbwarj'
+    assert solution.removeDuplicateLetters('tpuntljsc') == 'puntljsc'
+    assert solution.removeDuplicateLetters('fe') == 'fe'
+    assert solution.removeDuplicateLetters('nbcdpcwk') == 'nbcdpwk'
+    assert solution.removeDuplicateLetters('wdzbrbfp') == 'wdzbrfp'
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.wordsAbbreviation(['vkvwezvbm', 'tk', 'orwuwmm', 'rimo', 'n', 'hn', 'hznj', 'j', 'bxmbl']) == ['v7m', 'tk', 'o5m', 'r2o', 'n', 'hn', 'h2j', 'j', 'b3l']
     assert solution.wordsAbbreviation(['kyfubgfav', 'yudbg', 'i']) == ['k7v', 'y3g', 'i']
     assert solution.wordsAbbreviation(['fifzxbyya', 'dexmf', 'qyvvwua', 'ilex', 'aw', 'eeaxket', 'pdrwchmuw', 'fukvia', 'gowagjkzm']) == ['f7a', 'd3f', 'q5a', 'i2x', 'aw', 'e5t', 'p7w', 'f4a', 'g7m']
+
+def run_timed_tests(solution):
+    assert solution.wordsAbbreviation(['ggkgzjpf', 'xovkwx', 'olbn']) == ['g6f', 'x4x', 'o2n']
+    assert solution.wordsAbbreviation(['el', 'dqh', 'laahe']) == ['el', 'dqh', 'l3e']
+    assert solution.wordsAbbreviation(['jfckrtx', 'gbpugdalt', 'ehot', 'febj', 'by', 'ff', 'uyvucfcypo', 'srcrttymku']) == ['j5x', 'g7t', 'e2t', 'f2j', 'by', 'ff', 'u8o', 's8u']
+    assert solution.wordsAbbreviation(['bboftpag', 'lzavexquoo', 'ocgzcjsw', 'usoxqccu', 'eybqbso', 'nlnrhm']) == ['b6g', 'l8o', 'o6w', 'u6u', 'e5o', 'n4m']
+    assert solution.wordsAbbreviation(['yrnb', 'reszfvzwsm', 'mvzmydsttc', 'iejtazaek', 'psxaajcy', 'ubx', 'ardicpegz', 'ov', 'hsydbtn']) == ['y2b', 'r8m', 'm8c', 'i7k', 'p6y', 'ubx', 'a7z', 'ov', 'h5n']
+    assert solution.wordsAbbreviation(['dyumohkw', 'eisqidxb', 'qjirmuq', 'aefs', 'pce', 'ophnshe', 'svnjpafmf', 'xkhi']) == ['d6w', 'e6b', 'q5q', 'a2s', 'pce', 'o5e', 's7f', 'x2i']
+    assert solution.wordsAbbreviation(['brhwkgbjw', 'wfqk', 'krnc', 's', 'zaran']) == ['b7w', 'w2k', 'k2c', 's', 'z3n']
+    assert solution.wordsAbbreviation(['thhjjqwl', 'rxd', 'vhvc', 'tc', 'bfp']) == ['t6l', 'rxd', 'v2c', 'tc', 'bfp']
+    assert solution.wordsAbbreviation(['hhhhant', 'nkewfqslty', 'ftuohdrnbf', 'hvvl', 'soyjujiy']) == ['h5t', 'n8y', 'f8f', 'h2l', 's6y']
+    assert solution.wordsAbbreviation(['ogkaqgsj', 'htswg', 'v', 'mgbredffy', 'jyokzsor', 'cl', 'gmrtldc', 'dbvcqlew']) == ['o6j', 'h3g', 'v', 'm7y', 'j6r', 'cl', 'g5c', 'd6w']
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

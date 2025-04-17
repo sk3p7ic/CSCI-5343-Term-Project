@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.findContentChildren([16, 23, 24, 35, 37, 46, 59, 97], [19, 66, 97, 99]) == 4
     assert solution.findContentChildren([4, 6, 10, 20, 23, 56, 57, 80], [8, 15, 37, 45, 69]) == 5
     assert solution.findContentChildren([8, 81, 93, 96], []) == 0
+
+def run_timed_tests(solution):
+    assert solution.findContentChildren([42], [44, 48, 80, 98]) == 1
+    assert solution.findContentChildren([11, 25, 38, 49, 86, 97, 99], []) == 0
+    assert solution.findContentChildren([13], [4, 25, 36, 47, 59]) == 1
+    assert solution.findContentChildren([15, 23, 27, 60, 81, 82, 95], [15]) == 1
+    assert solution.findContentChildren([36, 47, 52, 56, 91, 94, 100], [65, 99, 100]) == 3
+    assert solution.findContentChildren([13, 15, 46, 69, 88, 89], [2, 13, 21, 28, 62, 71, 78, 82, 100]) == 5
+    assert solution.findContentChildren([3, 48, 77], []) == 0
+    assert solution.findContentChildren([12, 17, 86, 89], [46]) == 1
+    assert solution.findContentChildren([15, 32, 34, 57, 62, 64, 78], [2, 10, 36, 40, 56, 72, 86]) == 5
+    assert solution.findContentChildren([7, 40, 43, 48, 57, 61, 72, 90, 94], []) == 0
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

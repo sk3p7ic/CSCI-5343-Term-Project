@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.maxNumber([2], [9, 4, 7, 8, 3, 0, 2, 6, 5, 1], 2) == [9, 8]
     assert solution.maxNumber([3, 6, 2], [7, 9, 3, 1, 6, 0], 1) == [9]
     assert solution.maxNumber([3], [9], 1) == [9]
+
+def run_timed_tests(solution):
+    assert solution.maxNumber([6, 0, 4, 7], [6, 8], 5) == [8, 6, 0, 4, 7]
+    assert solution.maxNumber([8, 3, 9, 7, 6, 0, 5, 2, 4, 1], [0, 4, 9, 7, 6, 1], 7) == [9, 9, 7, 7, 6, 6, 5]
+    assert solution.maxNumber([9, 5, 3, 7, 8, 2, 4], [1, 5, 6, 2, 9, 8, 7], 7) == [9, 9, 8, 8, 7, 2, 4]
+    assert solution.maxNumber([5], [9, 2, 7, 0, 8, 1, 5, 6, 3, 4], 2) == [9, 8]
+    assert solution.maxNumber([5, 4, 1, 6, 7, 0, 9], [6, 8, 7, 0, 4, 5, 9, 3, 2], 10) == [9, 6, 8, 7, 0, 4, 5, 9, 3, 2]
+    assert solution.maxNumber([3, 8, 5, 1, 0], [4, 0, 2, 1], 3) == [8, 5, 4]
+    assert solution.maxNumber([0, 8, 3, 2, 5], [4, 1], 1) == [8]
+    assert solution.maxNumber([0, 3, 5, 8, 7, 1], [8, 7, 2, 9, 5, 6, 4, 0, 3, 1], 5) == [9, 8, 7, 6, 4]
+    assert solution.maxNumber([0, 3, 8, 7], [1], 2) == [8, 7]
+    assert solution.maxNumber([7, 9, 6, 2, 5, 1, 0, 4], [1, 8, 0], 5) == [9, 8, 6, 5, 4]
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

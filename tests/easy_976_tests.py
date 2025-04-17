@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.largestPerimeter([137240, 213710, 417764, 457003, 552832, 605031, 648039, 659635, 980060]) == 2287734
     assert solution.largestPerimeter([198925, 202797, 480073, 515209]) == 1198079
     assert solution.largestPerimeter([30869, 575220, 683820, 722291]) == 1981331
+
+def run_timed_tests(solution):
+    assert solution.largestPerimeter([434493, 520440, 616438, 628268, 641965, 733236, 911253, 914728]) == 2559217
+    assert solution.largestPerimeter([608071, 736445, 756933, 955948]) == 2449326
+    assert solution.largestPerimeter([36475, 167373, 835988, 941551, 978698, 990801]) == 2911050
+    assert solution.largestPerimeter([70684, 338019, 437643, 449586, 657144, 801441, 808814, 953428]) == 2563683
+    assert solution.largestPerimeter([268601, 290001, 795414]) == 0
+    assert solution.largestPerimeter([45749, 111306, 292786, 496571, 538713, 581649, 829562, 862150]) == 2273361
+    assert solution.largestPerimeter([284366, 406781, 555606, 565983, 679101]) == 1800690
+    assert solution.largestPerimeter([59286, 103391, 223733, 236758, 356538, 545933, 602009, 646218, 692645, 721108]) == 2059971
+    assert solution.largestPerimeter([115292, 251534, 304386, 400006, 979045]) == 955926
+    assert solution.largestPerimeter([381455, 390472, 527238, 540780, 625923, 737513, 806191, 915739, 957321]) == 2679251
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

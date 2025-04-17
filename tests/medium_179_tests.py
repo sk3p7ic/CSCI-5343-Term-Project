@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.largestNumber([10, 8, 60, 70, 35]) == '870603510'
     assert solution.largestNumber([56, 40, 89]) == '895640'
     assert solution.largestNumber([19]) == '19'
+
+def run_timed_tests(solution):
+    assert solution.largestNumber([57, 79, 87, 61, 72]) == '8779726157'
+    assert solution.largestNumber([53, 38, 73, 56, 100]) == '73565338100'
+    assert solution.largestNumber([89, 75, 87, 84]) == '89878475'
+    assert solution.largestNumber([27, 12, 14, 37, 76, 71, 9, 26]) == '976713727261412'
+    assert solution.largestNumber([47, 14, 98, 27, 23, 32]) == '984732272314'
+    assert solution.largestNumber([36, 86, 37]) == '863736'
+    assert solution.largestNumber([9, 100, 15, 93, 27]) == '9932715100'
+    assert solution.largestNumber([40, 1, 61, 77, 51, 6, 99]) == '997766151401'
+    assert solution.largestNumber([86, 10, 96, 87, 15, 22, 47, 88]) == '9688878647221510'
+    assert solution.largestNumber([12, 6]) == '612'
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

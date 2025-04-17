@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.findMinMoves([87808, 86564, 13416, 75990, 18935, 16290, 35362, 6729, 77294]) == -1
     assert solution.findMinMoves([96806, 63685, 6916, 63039, 69058, 26272, 79554, 91198, 94685]) == -1
     assert solution.findMinMoves([64546, 23822, 49002, 46475, 85730, 63282, 31957, 30123, 64487, 67636]) == 33024
+
+def run_timed_tests(solution):
+    assert solution.findMinMoves([86085, 63081, 92523, 62834, 94292, 45356, 10810, 85316, 10785, 70039]) == -1
+    assert solution.findMinMoves([1131, 2330, 16654, 4860, 88564, 73252, 87617, 21336]) == 122897
+    assert solution.findMinMoves([51585, 67007, 12181, 51858, 94425]) == -1
+    assert solution.findMinMoves([14872, 38940, 50810, 88324, 91726, 50737, 40132, 63562, 46254]) == -1
+    assert solution.findMinMoves([51936, 70431, 12913, 41108, 59910, 48549, 53094]) == -1
+    assert solution.findMinMoves([15011, 23871, 60567, 58940, 10900, 44605, 14305, 4638]) == -1
+    assert solution.findMinMoves([50337, 77670, 95557, 59169, 50434, 57921, 14281, 29329]) == -1
+    assert solution.findMinMoves([21637, 15224, 57846, 1013, 6829, 31747, 26374, 93414, 92426]) == -1
+    assert solution.findMinMoves([70890, 33406, 77735, 30435, 95018, 21229, 39821, 19125, 40580]) == -1
+    assert solution.findMinMoves([26611, 51845, 5719, 63725, 17182, 38334, 11025, 82617]) == -1
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

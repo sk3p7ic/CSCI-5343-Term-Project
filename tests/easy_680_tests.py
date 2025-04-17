@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.validPalindrome("toescorfn") == False
     assert solution.validPalindrome("roudolimv") == False
     assert solution.validPalindrome("zxcbfhbq") == False
+
+def run_timed_tests(solution):
+    assert solution.validPalindrome("ycmhojj") == False
+    assert solution.validPalindrome("gxopvboat") == False
+    assert solution.validPalindrome("vr") == True
+    assert solution.validPalindrome("yccnizg") == False
+    assert solution.validPalindrome("tfjoxv") == False
+    assert solution.validPalindrome("gxqwe") == False
+    assert solution.validPalindrome("oh") == True
+    assert solution.validPalindrome("kyhbmehb") == False
+    assert solution.validPalindrome("wbduqxov") == False
+    assert solution.validPalindrome("xu") == True
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

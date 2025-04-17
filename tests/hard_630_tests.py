@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.scheduleCourse([[95, 239], [84, 351], [6, 458], [18, 485], [13, 490], [39, 537], [50, 687], [63, 721]]) == 8
     assert solution.scheduleCourse([[11, 398], [71, 488], [63, 496], [54, 526], [11, 917]]) == 5
     assert solution.scheduleCourse([[35, 46]]) == 1
+
+def run_timed_tests(solution):
+    assert solution.scheduleCourse([[55, 76], [96, 154], [61, 254], [75, 277], [27, 399], [44, 479], [23, 514], [28, 955]]) == 7
+    assert solution.scheduleCourse([[54, 474], [34, 594], [98, 630], [6, 787], [62, 955], [8, 970]]) == 6
+    assert solution.scheduleCourse([[51, 115], [34, 302], [98, 305], [49, 417], [1, 745], [60, 921], [80, 933]]) == 7
+    assert solution.scheduleCourse([[49, 165], [97, 172], [49, 625], [70, 632], [93, 759], [97, 853], [70, 924]]) == 7
+    assert solution.scheduleCourse([[66, 141], [80, 755], [57, 788]]) == 3
+    assert solution.scheduleCourse([[85, 117], [41, 133], [79, 148], [82, 641], [87, 754], [79, 789], [34, 893]]) == 6
+    assert solution.scheduleCourse([[7, 63], [100, 75], [91, 189], [11, 235], [2, 314]]) == 4
+    assert solution.scheduleCourse([[23, 277], [89, 387]]) == 2
+    assert solution.scheduleCourse([[50, 129], [44, 609], [29, 667], [39, 939], [73, 990]]) == 5
+    assert solution.scheduleCourse([[67, 20], [30, 32], [24, 387], [13, 775], [88, 827]]) == 4
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

@@ -20,12 +20,16 @@ class TestSet:
     def __repr__(self):
         basics = '\n'.join([f'    {b}' for b in self.basic])
         advs = '\n'.join([f'    {a}' for a in self.advanced])
+        timed = '\n'.join([f'    {t}' for t in self.advanced[:10]])
         return f'''
 def run_basic_tests(solution):
 {basics}
 
 def run_advanced_tests(solution):
 {advs}
+
+def run_timed_tests(solution):
+{timed}
         '''
 
 
@@ -79,8 +83,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

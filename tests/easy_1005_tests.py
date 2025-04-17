@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.largestSumAfterKNegations([-5, 28], 71) == 33
     assert solution.largestSumAfterKNegations([14, 49, 0, 18], 3) == 81
     assert solution.largestSumAfterKNegations([-14], 94) == -14
+
+def run_timed_tests(solution):
+    assert solution.largestSumAfterKNegations([-25, 64, 53, -59, -31, -75], 92) == 307
+    assert solution.largestSumAfterKNegations([23, -77, -29, -8, -31, 24, -58], 18) == 234
+    assert solution.largestSumAfterKNegations([-43, -45, -93, 73, -18, 45], 81) == 281
+    assert solution.largestSumAfterKNegations([73, -7, 15, 76, 71, 51, -93, -24, 21], 25) == 431
+    assert solution.largestSumAfterKNegations([66, 78], 66) == 144
+    assert solution.largestSumAfterKNegations([73, 10, -39, 0, -1, -94, -73], 27) == 290
+    assert solution.largestSumAfterKNegations([-3, -72, -66, -18, 5, -81], 76) == 239
+    assert solution.largestSumAfterKNegations([49, 19, 14, -40, -66, 72, -61, 20], 88) == 313
+    assert solution.largestSumAfterKNegations([86, -43, 78, -7, -51, -67, -68], 6) == 386
+    assert solution.largestSumAfterKNegations([-89, 67, -36, -28], 66) == 164
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

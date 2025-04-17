@@ -19,8 +19,8 @@ done
 
 echo ">>> Gathering average execution times."
 epochs=100000
-rm *.bak
-mv times.csv times.csv.bak
+rm ../*.bak
+mv ../times.csv ../times.csv.bak
 for fname in *tests*.py; do
     if [ -f "$fname" ]; then
         echo "Running $fname"
@@ -30,3 +30,6 @@ for fname in *tests*.py; do
         python3 "$fname" time gemini "$epochs" >> ../times.csv
     fi
 done
+
+cd ..
+python3 time_printer.py

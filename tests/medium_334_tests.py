@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.increasingTriplet([15, 70, 5, 95]) == True
     assert solution.increasingTriplet([9, 31, 4, 85, 93, 83, 92]) == True
     assert solution.increasingTriplet([80, 20, 59, 34, 97, 19, 35, 72, 93]) == True
+
+def run_timed_tests(solution):
+    assert solution.increasingTriplet([71, 63, 86]) == False
+    assert solution.increasingTriplet([16, 23, 13, 86]) == True
+    assert solution.increasingTriplet([74, 86, 49, 61, 3, 39, 45, 20, 73, 75]) == True
+    assert solution.increasingTriplet([56, 61, 80, 38, 40, 20, 62, 72, 51]) == True
+    assert solution.increasingTriplet([60, 100, 7, 2, 90, 21, 22]) == True
+    assert solution.increasingTriplet([58, 77, 50, 17, 62, 67, 13, 40, 53]) == True
+    assert solution.increasingTriplet([21, 4, 14, 76, 94]) == True
+    assert solution.increasingTriplet([78, 36, 35]) == False
+    assert solution.increasingTriplet([62, 25, 17, 52, 97, 91, 85]) == True
+    assert solution.increasingTriplet([20, 19, 4]) == False
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

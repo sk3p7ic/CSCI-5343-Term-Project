@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.reconstructQueue([[90, 1], [82, 0], [44, 0], [34, 0], [17, 3]]) == [[34, 0], [44, 0], [82, 0], [17, 3], [90, 1]]
     assert solution.reconstructQueue([[99, 0], [99, 3], [81, 0], [63, 3], [20, 1], [14, 2], [13, 0], [13, 6]]) == [[13, 0], [81, 0], [20, 1], [14, 2], [99, 0], [99, 3], [13, 6], [63, 3]]
     assert solution.reconstructQueue([[98, 0], [96, 0], [92, 5], [71, 1], [68, 0], [60, 2], [16, 6], [7, 4], [1, 0]]) == [[1, 0], [68, 0], [96, 0], [60, 2], [71, 1], [7, 4], [98, 0], [92, 5], [16, 6]]
+
+def run_timed_tests(solution):
+    assert solution.reconstructQueue([[95, 1], [94, 4], [88, 3], [76, 4], [22, 0], [18, 2], [15, 2], [12, 2], [9, 5]]) == [[22, 0], [95, 1], [12, 2], [15, 2], [18, 2], [9, 5], [94, 4], [88, 3], [76, 4]]
+    assert solution.reconstructQueue([[70, 1], [68, 1], [55, 0]]) == [[55, 0], [70, 1], [68, 1]]
+    assert solution.reconstructQueue([[66, 1], [47, 1], [27, 0], [26, 0], [24, 1]]) == [[26, 0], [24, 1], [27, 0], [66, 1], [47, 1]]
+    assert solution.reconstructQueue([[95, 0], [85, 5], [81, 2], [79, 4], [76, 3], [60, 1], [29, 0], [1, 0]]) == [[1, 0], [29, 0], [95, 0], [60, 1], [85, 5], [81, 2], [76, 3], [79, 4]]
+    assert solution.reconstructQueue([[69, 1], [60, 0], [42, 1]]) == [[60, 0], [42, 1], [69, 1]]
+    assert solution.reconstructQueue([[25, 0], [25, 0], [14, 0], [14, 1]]) == [[14, 0], [14, 1], [25, 0], [25, 0]]
+    assert solution.reconstructQueue([[86, 0], [58, 3], [55, 0], [45, 2], [17, 2], [13, 4], [8, 1], [8, 3], [2, 4]]) == [[55, 0], [8, 1], [86, 0], [8, 3], [2, 4], [17, 2], [45, 2], [13, 4], [58, 3]]
+    assert solution.reconstructQueue([[98, 3], [88, 1], [73, 0], [71, 4], [68, 0], [66, 0], [10, 0]]) == [[10, 0], [66, 0], [68, 0], [73, 0], [98, 3], [88, 1], [71, 4]]
+    assert solution.reconstructQueue([[99, 0], [92, 1], [62, 0], [49, 0], [42, 0], [33, 2], [30, 1], [3, 0]]) == [[3, 0], [42, 0], [30, 1], [49, 0], [33, 2], [62, 0], [99, 0], [92, 1]]
+    assert solution.reconstructQueue([[72, 1], [67, 2], [25, 0], [23, 0]]) == [[23, 0], [25, 0], [72, 1], [67, 2]]
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

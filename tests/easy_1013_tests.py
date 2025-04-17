@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.canThreePartsEqualSum([50, 94, 87, 66, 72, 92, 7, 95, 17, 41]) == False
     assert solution.canThreePartsEqualSum([66, 96, 44, 91, 6]) == False
     assert solution.canThreePartsEqualSum([8, 25, 64, 85]) == False
+
+def run_timed_tests(solution):
+    assert solution.canThreePartsEqualSum([21, 91, 16, 58, 73, 50, 24, 85]) == False
+    assert solution.canThreePartsEqualSum([58, 80, 50, 31, 18, 75, 68, 15]) == False
+    assert solution.canThreePartsEqualSum([34, 11, 3, 65]) == False
+    assert solution.canThreePartsEqualSum([1, 39, 71, 42, 15, 59, 92, 47, 95]) == False
+    assert solution.canThreePartsEqualSum([55, 26, 33, 52, 50, 39, 75, 16, 82, 22]) == False
+    assert solution.canThreePartsEqualSum([87, 47, 22, 52, 37]) == False
+    assert solution.canThreePartsEqualSum([32, 34, 13, 87, 6, 15, 21]) == False
+    assert solution.canThreePartsEqualSum([56, 15, 60, 85, 99, 18, 75]) == False
+    assert solution.canThreePartsEqualSum([78, 50, 67, 25, 42, 38, 39, 97, 28]) == False
+    assert solution.canThreePartsEqualSum([22, 63, 75, 55, 12, 26, 87, 67, 11, 47]) == False
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

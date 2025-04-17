@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.maxArea([8785, 2469, 4802, 3718, 1575, 3705, 3464, 891, 7113]) == 56904
     assert solution.maxArea([6963, 146, 2745, 6377, 3632, 5923]) == 29615
     assert solution.maxArea([1889, 1895, 4957, 4119, 5059, 1783, 8608, 7787]) == 24785
+
+def run_timed_tests(solution):
+    assert solution.maxArea([6728, 372, 5812]) == 11624
+    assert solution.maxArea([9985, 3437]) == 3437
+    assert solution.maxArea([8118, 4329, 2379, 751, 2496, 5226]) == 26130
+    assert solution.maxArea([9280, 5489, 7935, 9972, 4171, 5413, 7226, 4756, 3201]) == 43356
+    assert solution.maxArea([3097, 4458, 47, 118, 8790, 7521, 4044, 4244]) == 25464
+    assert solution.maxArea([5632, 2411, 4811]) == 9622
+    assert solution.maxArea([3525, 8157, 7774, 2773, 1223, 3711, 6932, 4556, 9908, 7833]) == 62664
+    assert solution.maxArea([7877, 3917, 2392]) == 4784
+    assert solution.maxArea([350, 3006, 5146, 7769]) == 6012
+    assert solution.maxArea([9380, 7633, 2530, 5814, 7505, 7906, 3745, 343, 4952]) == 39616
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

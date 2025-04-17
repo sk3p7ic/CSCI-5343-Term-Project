@@ -103,6 +103,18 @@ def run_advanced_tests(solution):
     assert solution.rearrangeString('rox', 0) == 'orx'
     assert solution.rearrangeString('be', 1) == 'be'
     assert solution.rearrangeString('hpvtq', 2) == 'hpqtv'
+
+def run_timed_tests(solution):
+    assert solution.rearrangeString('by', 0) == 'by'
+    assert solution.rearrangeString('olu', 1) == 'lou'
+    assert solution.rearrangeString('cuigkxmgv', 4) == 'gcikgmuvx'
+    assert solution.rearrangeString('kucgbvgnefy', 8) == 'gbcefknugvy'
+    assert solution.rearrangeString('znvpkq', 5) == 'knpqvz'
+    assert solution.rearrangeString('bq', 2) == 'bq'
+    assert solution.rearrangeString('ura', 3) == 'aru'
+    assert solution.rearrangeString('ettdnyj', 6) == 'tdejnyt'
+    assert solution.rearrangeString('ntxy', 1) == 'ntxy'
+    assert solution.rearrangeString('cxruog', 2) == 'cgorux'
         
 
 if __name__ == '__main__':
@@ -133,8 +145,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.arrayPairSum([4212, -5152, 6134, -9170, -8267, 9608, -5113, -8864, 8093, -3331]) == -10245
     assert solution.arrayPairSum([1260, -9341, -2533, -361, 9813, -1780, 6864, -5248]) == -5371
     assert solution.arrayPairSum([-5673, 8447, -2794, -5585, -4564, 6780]) == -3457
+
+def run_timed_tests(solution):
+    assert solution.arrayPairSum([1375, -1930, 181, 1787, 8555, -4929, -9209, -8304, -3311, -3433, -973, -3730, -6059, 478, -2362, -6069, -7004, 1119]) == -28156
+    assert solution.arrayPairSum([285, 8133, -8755, 6352, -6025, 5430, -2333, -7781, 8983, -4726, -3457, 7959]) == -3467
+    assert solution.arrayPairSum([8483, -56, 8040, -5108]) == 2932
+    assert solution.arrayPairSum([-3984, -1368, 5233, 1695, 567, -9391, 818, -918, -517, -2946, -208, -4871, 1484, 4618, -7313, 6287, -692, 374, 281, 2451]) == -8627
+    assert solution.arrayPairSum([-7699, -3122, -8872, 5907, -8020, 1550, -3699, 3380, 1168, 6810, -1947, 2399, 6208, 8359, 9794, 1756]) == 1178
+    assert solution.arrayPairSum([9940, 534, -3655, -1745, 2096, 3725, -4096, -4439]) == -3835
+    assert solution.arrayPairSum([1085, -8664, -1696, -3398]) == -10360
+    assert solution.arrayPairSum([1322, -4697, 8238, 2445, 5605, 4612, -162, -9445]) == -1557
+    assert solution.arrayPairSum([6119, -5640, 3598, 9215, 5639, 8561, -197, -71, 4827, 4620, 5426, 7975, 7961, -3860, 4085, 3781]) == 28834
+    assert solution.arrayPairSum([3390, 7758, -9854, 91, -325, 9533, 6082, -8044, 1638, 8934, -7126, -859, -7720, -4757, 1625, 3063, -8298, -1690]) == -7335
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

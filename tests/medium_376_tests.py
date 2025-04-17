@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.wiggleMaxLength([68, 57, 58, 2, 36, 22, 88, 25, 9, 38]) == 9
     assert solution.wiggleMaxLength([96, 17, 94, 99, 39]) == 4
     assert solution.wiggleMaxLength([52, 39, 43, 22]) == 4
+
+def run_timed_tests(solution):
+    assert solution.wiggleMaxLength([71, 24, 67, 64, 85, 65, 39, 68, 29, 80]) == 9
+    assert solution.wiggleMaxLength([10, 57, 95, 53, 3, 2, 36]) == 4
+    assert solution.wiggleMaxLength([23, 38, 64, 36, 27, 35, 53]) == 4
+    assert solution.wiggleMaxLength([100, 1, 31, 40, 96, 5, 86, 73, 33, 9]) == 6
+    assert solution.wiggleMaxLength([11, 29, 4, 39]) == 4
+    assert solution.wiggleMaxLength([4, 89, 68]) == 3
+    assert solution.wiggleMaxLength([48, 79, 37, 33, 30]) == 3
+    assert solution.wiggleMaxLength([24, 27, 2, 36, 14, 81, 16, 98]) == 8
+    assert solution.wiggleMaxLength([41, 47, 38, 79, 25, 60, 95, 88, 91]) == 8
+    assert solution.wiggleMaxLength([44, 31, 39, 79, 51, 55]) == 5
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.longestPalindrome("uCKQvx") == 1
     assert solution.longestPalindrome("UVtYfIQsyU") == 3
     assert solution.longestPalindrome("VAGueWdib") == 1
+
+def run_timed_tests(solution):
+    assert solution.longestPalindrome("GxyDLlAh") == 1
+    assert solution.longestPalindrome("HcEbNV") == 1
+    assert solution.longestPalindrome("DNQeW") == 1
+    assert solution.longestPalindrome("Rm") == 1
+    assert solution.longestPalindrome("aMOqIUDZZ") == 3
+    assert solution.longestPalindrome("WHtu") == 1
+    assert solution.longestPalindrome("IKOqqJaucR") == 3
+    assert solution.longestPalindrome("ig") == 1
+    assert solution.longestPalindrome("LeUzsYoEbT") == 1
+    assert solution.longestPalindrome("XgZSa") == 1
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

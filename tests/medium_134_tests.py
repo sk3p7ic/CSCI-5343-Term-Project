@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.canCompleteCircuit([59, 29, 85, 84, 13, 88, 64, 39, 56], [100, 13, 58, 91, 64, 45, 22, 43, 25]) == 6
     assert solution.canCompleteCircuit([73, 78], [30, 91]) == 0
     assert solution.canCompleteCircuit([60, 95, 87, 78, 8, 50, 34, 2, 1, 72], [92, 47, 42, 73, 57, 77, 49, 34, 55, 19]) == -1
+
+def run_timed_tests(solution):
+    assert solution.canCompleteCircuit([69, 80, 53, 31, 63, 99, 40, 45, 46], [42, 80, 50, 5, 46, 94, 99, 41, 45]) == 8
+    assert solution.canCompleteCircuit([59, 49, 36, 84, 16, 14, 1, 40, 98], [9, 66, 19, 28, 53, 27, 5, 6, 18]) == 8
+    assert solution.canCompleteCircuit([77, 6, 75], [36, 35, 66]) == 2
+    assert solution.canCompleteCircuit([13, 26], [53, 44]) == -1
+    assert solution.canCompleteCircuit([36, 81, 74, 88, 50, 37], [29, 65, 77, 59, 21, 92]) == 3
+    assert solution.canCompleteCircuit([71, 19, 12, 61, 10, 68, 50], [56, 87, 78, 71, 57, 10, 21]) == -1
+    assert solution.canCompleteCircuit([5, 24, 84], [3, 56, 60]) == -1
+    assert solution.canCompleteCircuit([80, 35, 41, 100], [12, 98, 31, 80]) == 3
+    assert solution.canCompleteCircuit([62, 87, 42, 7], [66, 93, 17, 6]) == 2
+    assert solution.canCompleteCircuit([12, 36], [24, 46]) == -1
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

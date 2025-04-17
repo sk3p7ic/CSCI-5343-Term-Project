@@ -110,6 +110,18 @@ def run_advanced_tests(solution):
     assert solution.canPlaceFlowers([1, 0, 0, 1, 1, 0, 1, 0, 1, 1], 3) == False
     assert solution.canPlaceFlowers([0, 0], 0) == True
     assert solution.canPlaceFlowers([0, 1, 1, 1, 1, 1, 1, 1, 0, 1], 4) == False
+
+def run_timed_tests(solution):
+    assert solution.canPlaceFlowers([0, 0, 1, 0, 1, 0, 0], 3) == False
+    assert solution.canPlaceFlowers([1, 1, 1, 1, 1, 1, 0], 1) == False
+    assert solution.canPlaceFlowers([0], 0) == True
+    assert solution.canPlaceFlowers([1, 1, 0, 1], 0) == True
+    assert solution.canPlaceFlowers([0, 1, 0, 0, 1, 0, 0, 0, 1], 4) == False
+    assert solution.canPlaceFlowers([0, 1, 0, 0, 0], 4) == False
+    assert solution.canPlaceFlowers([0], 0) == True
+    assert solution.canPlaceFlowers([0, 0, 1, 1, 1], 0) == True
+    assert solution.canPlaceFlowers([1, 0, 1, 1, 1, 0, 1, 0, 1, 1], 7) == False
+    assert solution.canPlaceFlowers([1, 1, 0, 0, 0], 3) == False
         
 
 if __name__ == '__main__':
@@ -140,8 +152,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:

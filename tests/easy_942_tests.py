@@ -111,6 +111,18 @@ def run_advanced_tests(solution):
     assert solution.diStringMatch("D") == [1, 0]
     assert solution.diStringMatch("III") == [0, 1, 2, 3]
     assert solution.diStringMatch("DIDIDI") == [6, 0, 5, 1, 4, 2, 3]
+
+def run_timed_tests(solution):
+    assert solution.diStringMatch("IDI") == [0, 3, 1, 2]
+    assert solution.diStringMatch("DIDDIIII") == [8, 0, 7, 6, 1, 2, 3, 4, 5]
+    assert solution.diStringMatch("IIII") == [0, 1, 2, 3, 4]
+    assert solution.diStringMatch("IIIDI") == [0, 1, 2, 5, 3, 4]
+    assert solution.diStringMatch("DII") == [3, 0, 1, 2]
+    assert solution.diStringMatch("I") == [0, 1]
+    assert solution.diStringMatch("DIIIDIDD") == [8, 0, 1, 2, 7, 3, 6, 5, 4]
+    assert solution.diStringMatch("IIDII") == [0, 1, 5, 2, 3, 4]
+    assert solution.diStringMatch("IIIDDID") == [0, 1, 2, 7, 6, 3, 5, 4]
+    assert solution.diStringMatch("IDIDID") == [0, 6, 1, 5, 2, 4, 3]
         
 
 if __name__ == '__main__':
@@ -141,8 +153,7 @@ if __name__ == '__main__':
         try:
             for _ in range(int(sys.argv[3])):
                 start = time.time()
-                run_basic_tests(solver)
-                run_advanced_tests(solver)
+                run_timed_tests(solver)
                 end = time.time()
                 times.append(end - start)
         except AssertionError as err:
