@@ -5,15 +5,18 @@ import json
 with open('./dataset_with_difficulty_and_algorithm.json', 'r') as dfile:
     data = json.load(dfile)
 
+# Get and list the possible paradigms
 paradigms = set([d for ds in map(lambda d: d['algorithms'], data) for d in ds])
 print(f'Dataset paradigms: {paradigms}')
 
+# Choose the 'greedy' paradigm
 PARADIGM = 'greedy'
 print(f'Using paradigm: {PARADIGM}')
 
 
 @dataclass
 class TestSet:
+    """Stores a set of tests for a given `Problem`."""
     basic: list[str]
     advanced: list[str]
 
@@ -35,15 +38,16 @@ def run_timed_tests(solution):
 
 @dataclass
 class Problem:
+    """Stores needed information about a problem in the input dataset."""
     idx: int
     name: str
     desc: str
     solu: str
     tests: TestSet
-    diff: str
+    difficulty: str
 
     def __repr__(self):
-        modname = f'{self.diff.lower()}_{self.idx}'
+        modname = f'{self.difficulty.lower()}_{self.idx}'
         solvers = ['SolutionChatGPT()', 'SolutionGemini()', 'SolutionClaude()']
         if self.idx == 527:
             solvers.pop()  # Remove Clause (it's broken)
@@ -116,31 +120,35 @@ problems = {
     'Hard': []
 }
 
+# Gather the problems under the relevant paradigm
 for diff in problems.keys():
     def is_relevant(d: any) -> bool:
         return d['difficulty'] == diff and PARADIGM in d['algorithms']
     for d in filter(is_relevant, data):
-        def test_filter(t: str) -> bool:
-            return 'Solution' not in t
-        tests = TestSet(list(filter(test_filter,
+        def is_test_assertion(t: str) -> bool:
+            return 'assert' in t
+        tests = TestSet(list(filter(is_test_assertion,
                                     d['small_test_cases'].splitlines())),
-                        list(filter(test_filter,
+                        list(filter(is_test_assertion,
                                     d['test_case'].splitlines())))
         problem = Problem(int(d['problem_idx']), d['task_name'],
                           d['markdown_description'], d['canonical_solution'],
                           tests, diff)
         problems[diff].append(problem)
 
+# List the number of problems in each difficulty
 print('Problem counts:')
 for diff, probs in problems.items():
     print(f'    N {diff}: {len(probs)}')
 
+# Get the first 10 problems of each difficulty
 EASY = problems['Easy'][:10]
 MEDIUM = problems['Medium'][:10]
 HARD = problems['Hard'][:10]
 
 
 def getNames(ps: list[Problem]) -> list[str]:
+    """Returns a list of problem names from a list of `Problem`s."""
     return [p.name for p in ps]
 
 
@@ -150,15 +158,20 @@ print(f'Selected Hard Problems: {getNames(HARD)}')
 
 
 def write_problems(diff: str, ps: list[Problem]):
+    """Writes problems to their own test files and generates the prompts."""
     for p in ps:
+        # Write the tests
         with open(f'./tests/{diff.lower()}_{p.idx}_tests.py', 'w') as f:
             f.write(repr(p))
+        # Write the human-generated solution
         with open(f'./tests/{diff.lower()}_{p.idx}_canon.py', 'w') as f:
             f.write(p.getSoluString())
+        # Write the prompt (problem description)
         with open(f'./prompts/{diff.lower()}_{p.idx}.md', 'w') as f:
             f.write(p.desc)
 
 
+# Write the problems
 write_problems('Easy', EASY)
 write_problems('Medium', MEDIUM)
 write_problems('Hard', HARD)
