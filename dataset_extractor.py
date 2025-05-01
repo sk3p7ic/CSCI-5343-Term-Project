@@ -50,7 +50,7 @@ class Problem:
         modname = f'{self.difficulty.lower()}_{self.idx}'
         solvers = ['SolutionChatGPT()', 'SolutionGemini()', 'SolutionClaude()']
         if self.idx == 527:
-            solvers.pop()  # Remove Clause (it's broken)
+            solvers.pop()  # Remove Claude (it's broken)
         return f'''
 from {modname}_canon import Solution as SolutionCanon
 from chatgpt_{modname} import Solution as SolutionChatGPT
@@ -59,9 +59,14 @@ from gemini_{modname} import Solution as SolutionGemini
 
 {self.tests}
 
+def save_output(output: str):
+    with open('../times.csv', 'a') as f:
+        f.write(f'{{output}}\\n')
+
 if __name__ == '__main__':
     import sys
     problem_id = {self.idx}
+    output = ''
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
@@ -79,24 +84,28 @@ if __name__ == '__main__':
         }}[sys.argv[2]]()
         times = []
 
-        print(f'{modname},{{sys.argv[2]}},', end='')
+        output += f'{modname},{{sys.argv[2]}},'
         if problem_id == 527 and sys.argv[2] == 'claude':
-            print('-- NR --')
+            output += '-- NR --,'
+            save_output(output)
             sys.exit(0)
 
         try:
             for _ in range(int(sys.argv[3])):
-                start = time.time()
+                start = time.perf_counter_ns()
                 run_timed_tests(solver)
-                end = time.time()
+                end = time.perf_counter_ns()
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {{err}}', file=sys.stderr)
-            print('-- IR --')
+            output += '-- IR --,'
+            save_output(output)
             sys.exit(0)
 
         avg_time = statistics.mean(times)
-        print(f'{{avg_time:.4E}}')
+        total_time = sum(times)
+        output += f'{{avg_time:.4E}},{{total_time:.4E}}'
+        save_output(output)
 '''.strip()
 
     def getSoluString(self) -> str:

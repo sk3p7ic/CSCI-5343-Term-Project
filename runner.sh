@@ -18,16 +18,20 @@ for fname in *tests*.py; do
 done
 
 echo ">>> Gathering average execution times."
+rm -r ../mem-profiles
+mkdir ../mem-profiles
 epochs=100000
 rm ../*.bak
 mv ../times.csv ../times.csv.bak
+echo "problem,author,avg_time,total_time" > ../times.csv
 for fname in *tests*.py; do
     if [ -f "$fname" ]; then
-        echo "Running $fname"
-        python3 "$fname" time canon "$epochs" >> ../times.csv
-        python3 "$fname" time chatgpt "$epochs" >> ../times.csv
-        python3 "$fname" time claude "$epochs" >> ../times.csv
-        python3 "$fname" time gemini "$epochs" >> ../times.csv
+        echo "<><><>------ Running $fname ------<><><>"
+	memfile="../mem-profiles/$(echo "$fname" | awk -F'_tests' '{print $1}').dat"
+        mprof run --output "$memfile" --interval 0.001 "$fname" time canon "$epochs"
+        mprof run --output "$memfile" --interval 0.001 "$fname" time chatgpt "$epochs"
+        mprof run --output "$memfile" --interval 0.001 "$fname" time claude "$epochs"
+        mprof run --output "$memfile" --interval 0.001 "$fname" time gemini "$epochs"
     fi
 done
 

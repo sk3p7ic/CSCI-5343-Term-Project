@@ -5,7 +5,6 @@ from gemini_easy_942 import Solution as SolutionGemini
 
 
 def run_basic_tests(solution):
-    
     assert solution.diStringMatch("IDID") == [0, 4, 1, 3, 2]
     assert solution.diStringMatch("III") == [0, 1, 2, 3]
     assert solution.diStringMatch("DDI") == [3, 2, 0, 1]
@@ -125,9 +124,14 @@ def run_timed_tests(solution):
     assert solution.diStringMatch("IDIDID") == [0, 6, 1, 5, 2, 4, 3]
         
 
+def save_output(output: str):
+    with open('../times.csv', 'a') as f:
+        f.write(f'{output}\n')
+
 if __name__ == '__main__':
     import sys
     problem_id = 942
+    output = ''
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
@@ -145,21 +149,25 @@ if __name__ == '__main__':
         }[sys.argv[2]]()
         times = []
 
-        print(f'easy_942,{sys.argv[2]},', end='')
+        output += f'easy_942,{sys.argv[2]},'
         if problem_id == 527 and sys.argv[2] == 'claude':
-            print('-- NR --')
+            output += '-- NR --,'
+            save_output(output)
             sys.exit(0)
 
         try:
             for _ in range(int(sys.argv[3])):
-                start = time.time()
+                start = time.perf_counter_ns()
                 run_timed_tests(solver)
-                end = time.time()
+                end = time.perf_counter_ns()
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {err}', file=sys.stderr)
-            print('-- IR --')
+            output += '-- IR --,'
+            save_output(output)
             sys.exit(0)
 
         avg_time = statistics.mean(times)
-        print(f'{avg_time:.4E}')
+        total_time = sum(times)
+        output += f'{avg_time:.4E},{total_time:.4E}'
+        save_output(output)
