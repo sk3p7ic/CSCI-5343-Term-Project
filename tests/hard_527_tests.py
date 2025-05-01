@@ -5,7 +5,6 @@ from gemini_hard_527 import Solution as SolutionGemini
 
 
 def run_basic_tests(solution):
-    
     assert solution.wordsAbbreviation(["like","god","internal","me","internet","interval","intension","face","intrusion"]) == ["l2e","god","internal","me","i6t","interval","inte4n","f2e","intr4n"]
     assert solution.wordsAbbreviation(["aa","aaa"]) == ["aa","aaa"]
 
@@ -124,9 +123,14 @@ def run_timed_tests(solution):
     assert solution.wordsAbbreviation(['ogkaqgsj', 'htswg', 'v', 'mgbredffy', 'jyokzsor', 'cl', 'gmrtldc', 'dbvcqlew']) == ['o6j', 'h3g', 'v', 'm7y', 'j6r', 'cl', 'g5c', 'd6w']
         
 
+def save_output(output: str):
+    with open('../times.csv', 'a') as f:
+        f.write(f'{output}\n')
+
 if __name__ == '__main__':
     import sys
     problem_id = 527
+    output = ''
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
@@ -144,21 +148,25 @@ if __name__ == '__main__':
         }[sys.argv[2]]()
         times = []
 
-        print(f'hard_527,{sys.argv[2]},', end='')
+        output += f'hard_527,{sys.argv[2]},'
         if problem_id == 527 and sys.argv[2] == 'claude':
-            print('-- NR --')
+            output += '-- NR --,'
+            save_output(output)
             sys.exit(0)
 
         try:
             for _ in range(int(sys.argv[3])):
-                start = time.time()
+                start = time.perf_counter_ns()
                 run_timed_tests(solver)
-                end = time.time()
+                end = time.perf_counter_ns()
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {err}', file=sys.stderr)
-            print('-- IR --')
+            output += '-- IR --,'
+            save_output(output)
             sys.exit(0)
 
         avg_time = statistics.mean(times)
-        print(f'{avg_time:.4E}')
+        total_time = sum(times)
+        output += f'{avg_time:.4E},{total_time:.4E}'
+        save_output(output)

@@ -5,7 +5,6 @@ from gemini_hard_632 import Solution as SolutionGemini
 
 
 def run_basic_tests(solution):
-    
     assert solution.smallestRange([[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]) == [20,24]
     assert solution.smallestRange([[1,2,3],[1,2,3],[1,2,3]]) == [1,1]
 
@@ -124,9 +123,14 @@ def run_timed_tests(solution):
     assert solution.smallestRange([[-3961, -1444, 8979, 16866, 44154, 69991, 96263], [-55352, 61600], [-82565, -76846, -73634, -48739, -18794, 15701], [-61821, 20232, 39283, 52232, 65344]]) == [15701, 61600]
         
 
+def save_output(output: str):
+    with open('../times.csv', 'a') as f:
+        f.write(f'{output}\n')
+
 if __name__ == '__main__':
     import sys
     problem_id = 632
+    output = ''
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
@@ -144,21 +148,25 @@ if __name__ == '__main__':
         }[sys.argv[2]]()
         times = []
 
-        print(f'hard_632,{sys.argv[2]},', end='')
+        output += f'hard_632,{sys.argv[2]},'
         if problem_id == 527 and sys.argv[2] == 'claude':
-            print('-- NR --')
+            output += '-- NR --,'
+            save_output(output)
             sys.exit(0)
 
         try:
             for _ in range(int(sys.argv[3])):
-                start = time.time()
+                start = time.perf_counter_ns()
                 run_timed_tests(solver)
-                end = time.time()
+                end = time.perf_counter_ns()
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {err}', file=sys.stderr)
-            print('-- IR --')
+            output += '-- IR --,'
+            save_output(output)
             sys.exit(0)
 
         avg_time = statistics.mean(times)
-        print(f'{avg_time:.4E}')
+        total_time = sum(times)
+        output += f'{avg_time:.4E},{total_time:.4E}'
+        save_output(output)

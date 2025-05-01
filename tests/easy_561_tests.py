@@ -5,7 +5,6 @@ from gemini_easy_561 import Solution as SolutionGemini
 
 
 def run_basic_tests(solution):
-    
     assert solution.arrayPairSum([1, 4, 3, 2]) == 4
     assert solution.arrayPairSum([6, 2, 6, 5, 1, 2]) == 9
 
@@ -124,9 +123,14 @@ def run_timed_tests(solution):
     assert solution.arrayPairSum([3390, 7758, -9854, 91, -325, 9533, 6082, -8044, 1638, 8934, -7126, -859, -7720, -4757, 1625, 3063, -8298, -1690]) == -7335
         
 
+def save_output(output: str):
+    with open('../times.csv', 'a') as f:
+        f.write(f'{output}\n')
+
 if __name__ == '__main__':
     import sys
     problem_id = 561
+    output = ''
     if sys.argv[1] == 'test':
         solvers = [SolutionCanon()]
         if len(sys.argv) == 3 and sys.argv[2] == 'all':
@@ -144,21 +148,25 @@ if __name__ == '__main__':
         }[sys.argv[2]]()
         times = []
 
-        print(f'easy_561,{sys.argv[2]},', end='')
+        output += f'easy_561,{sys.argv[2]},'
         if problem_id == 527 and sys.argv[2] == 'claude':
-            print('-- NR --')
+            output += '-- NR --,'
+            save_output(output)
             sys.exit(0)
 
         try:
             for _ in range(int(sys.argv[3])):
-                start = time.time()
+                start = time.perf_counter_ns()
                 run_timed_tests(solver)
-                end = time.time()
+                end = time.perf_counter_ns()
                 times.append(end - start)
         except AssertionError as err:
             print(f'Assertion Failed: {err}', file=sys.stderr)
-            print('-- IR --')
+            output += '-- IR --,'
+            save_output(output)
             sys.exit(0)
 
         avg_time = statistics.mean(times)
-        print(f'{avg_time:.4E}')
+        total_time = sum(times)
+        output += f'{avg_time:.4E},{total_time:.4E}'
+        save_output(output)
