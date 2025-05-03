@@ -23,6 +23,7 @@ for (diff_idx, author, avg_time, total_time) in data:
     }
     results[diff][idx] = res
 
+
 def calc_mem_usage(chunk: list[str]) -> (float, float):
     prev_time = 0
     prev_mem_mb = 0
@@ -39,6 +40,7 @@ def calc_mem_usage(chunk: list[str]) -> (float, float):
         prev_time = timestamp
         prev_mem_mb = mem_in_mb
     return mem_time_mb_s, max_mem_usage
+
 
 for datafile in os.listdir('mem-profiles'):
     with open(f'mem-profiles/{datafile}', 'r') as df:
@@ -61,7 +63,20 @@ for difficulty, problems in results.items():
         for author, stats in times.items():
             avg_time = stats['time_avg']
             total_time = stats['time_total']
-            avg_mem = f'{stats['mem_avg']:.4E}'
-            max_mem = f'{stats['mem_max']:.4E}'
-            print(f'{idx:8s} {author:8s} {avg_time:12s} {total_time:12s} {avg_mem:12s} {max_mem:12s}')
+            avg_mem = f'{stats["mem_avg"]:.4E}'
+            max_mem = f'{stats["mem_max"]:.4E}'
+            print(
+                f'{idx:8s} {author:8s} {avg_time:12s} {total_time:12s} {avg_mem:12s} {max_mem:12s}')
     print('\n\n')
+
+for difficulty, problems in results.items():
+    output = f'{"Prob #":8s}\t{"Author":8s}\t{"Avg Time":12s}\t{"Total Time":12s}\t{"Avg Mem":12s}\t{"Max Mem":12s}\n'
+    for idx, times in problems.items():
+        for author, stats in times.items():
+            avg_time = stats['time_avg']
+            total_time = stats['time_total']
+            avg_mem = f'{stats["mem_avg"]:.4E}'
+            max_mem = f'{stats["mem_max"]:.4E}'
+            output += f'{idx:8s}\t{author:8s}\t{avg_time:12s}\t{total_time:12s}\t{avg_mem:12s}\t{max_mem:12s}\n'
+    with open(f'{difficulty}_times.csv', 'w') as f:
+        f.write(output)
